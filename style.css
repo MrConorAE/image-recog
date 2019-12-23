@@ -1,0 +1,73 @@
+body {
+    background-color: #2c2c2c;
+    color: white;
+    text-align: center;
+    font-family: "Roboto Mono";
+    padding: 0;
+    margin: 0;
+}
+
+.csstable {
+    display: table;
+    width: 100vw;
+    height: 110px;
+    margin-top: 10px;
+}
+
+.csstablerow {
+    display: table-row;
+}
+
+.csstablecell {
+    display: table-cell;
+    vertical-align: top;
+}
+
+.right {
+    text-align: right;
+    width: 33vw;
+}
+
+.left {
+    text-align: left;
+    width: 33vw;
+}
+
+.center {
+    text-align: center;
+    width: 33vw;
+}
+
+.labels {
+    color: white;
+    transition: 0.3s all;
+    text-shadow: white 0px 0px 5px;
+    font-size: 25px;
+    margin-top: 10px;
+}
+
+.notlabels {
+    color: #858585;
+    margin-top: 20px;
+    font-size: 25px;
+    margin-bottom: 0;
+    margin-top: 10px;
+}
+
+.labels.hide {
+    opacity: 0%;
+    height: 0px;
+    padding: 0;
+    margin: 0;
+}
+
+#conf {
+    margin: 0;
+    font-size: 18px;
+    transition: 0.3s all;
+}
+
+#model {
+    margin: 0;
+    font-size: 18px;
+}
