@@ -6,6 +6,8 @@ var video = document.querySelector("#videoElement");
 
 var labels = [];
 
+var running = true;
+
 function preload() {
   var modelname = "";
   while (modelname == "") {
@@ -35,6 +37,18 @@ function preload() {
 
 function setup() {
   classifier.classify(gotResult);
+}
+
+function videoToggle() {
+  if (running) {
+    running = false;
+    video.pause();
+    document.getElementById('playpause').innerHTML = "PLAY";
+  } else {
+    running = true;
+    video.play();
+    document.getElementById('playpause').innerHTML = "PAUSE";
+  }
 }
 
 // A function to run when we get any errors and the results
@@ -99,6 +113,8 @@ function onload() {
   document.getElementById('labels-cont').appendChild(newlabel);
 
   setInterval(function () {
-    classifier.classify(gotResult);
+    if (running) {
+      classifier.classify(gotResult);
+    }
   }, 1000);
 }
