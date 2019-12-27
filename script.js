@@ -28,7 +28,7 @@ function preload() {
       classifier = ml5.imageClassifier('Darknet', video);
       modelname = "DarkNet";
     } else {
-      alert("Invalid model.");
+      alert("Invalid model!");
     }
   }
   document.getElementById('model').innerHTML = ("Model: " + modelname);
@@ -43,29 +43,37 @@ function videoToggle() {
   if (running) {
     running = false;
     video.pause();
-    document.getElementById('playpause').innerHTML = "PLAY";
+    document.getElementById('playpause').innerHTML = "<i class='material-icons'>sync_disabled</i>";
+    document.getElementById('playpause').className = "manual";
+    document.getElementById('identify').disabled = false;
   } else {
     running = true;
     video.play();
-    document.getElementById('playpause').innerHTML = "PAUSE";
+    document.getElementById('playpause').innerHTML = "<i class='material-icons auto-icon'>loop</i>";
+    document.getElementById('playpause').className = "auto";
+    document.getElementById('identify').disabled = true;
   }
 }
 
+function instant() {
+  video.play();
+  video.pause();
+  classifier.classify(gotResult);
+}
+
 // A function to run when we get any errors and the results
-function gotResult(error, results) {
-  // Display error in the console
+function gotResult(error, results) {// Display error in the console
   if (error) {
     console.error(error);
   } else {
     // The results are in an array ordered by confidence.
-    console.log(results);
     displayResult(results);
   }
 }
 
 function displayResult(results) {
-  //Create
-  if (results[0].label != labels[labels.length - 1].innerHTML) {
+  //Is the prediction different?
+  if (results[0].label != labels[labels.length - 1].innerHTML) { //Yes - update prediction text and confidence
     var newlabel = document.createElement("p");
     newlabel.classList = "labels hide-b";
     newlabel.innerHTML = results[0].label;
@@ -86,8 +94,7 @@ function displayResult(results) {
         labels.shift();
       }, 300);
     }, 300);
-  } else {
-    //Only update confidence
+  } else { //No - only update confidence
     document.getElementById('conf').innerHTML = nf(results[0].confidence*100, 0, 1) + "% confidence";
     document.getElementById('conf').style = ("color: hsl(" + nf(results[0].confidence*100, 0, 1) + ", 100%, 50%); text-shadow: hsl(" + nf(results[0].confidence*100, 0, 1) + ", 100%, 50%) 0px 0px 5px;");
   }
@@ -113,8 +120,12 @@ function onload() {
   document.getElementById('labels-cont').appendChild(newlabel);
 
   setInterval(function () {
-    if (running) {
+    if (running) { //If not paused, keep updating every second
       classifier.classify(gotResult);
     }
   }, 1000);
+
+  /*setInterval(function () {
+    document.getElementById('labels-cont').style.width = labels[labels.length-1].offsetWidth;
+  }, 200);*/
 }

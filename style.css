@@ -9,9 +9,11 @@ body {
 
 .csstable {
     display: table;
-    width: 100vw;
     height: 130px;
     margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    table-layout: fixed;
 }
 
 .csstablerow {
@@ -25,17 +27,19 @@ body {
 
 .right {
     text-align: right;
-    width: 33vw;
+    width: 300px;
 }
 
 .left {
     text-align: left;
-    width: 33vw;
+    width: 300px;
 }
 
 .center {
     text-align: center;
-    width: 33vw;
+    box-sizing: border-box;
+    transition: 0.3s all;
+    width: 30vw;
 }
 
 .labels {
@@ -54,6 +58,7 @@ body {
 }
 
 .labels.hide-t {
+    transition: 0.3s all;
     opacity: 0%;
     height: 0px;
     padding: 0;
@@ -61,6 +66,7 @@ body {
 }
 
 .labels.hide-b {
+    transition: 0.3s all;
     opacity: 0%;
     height: 0px;
     padding: 0;
@@ -84,29 +90,70 @@ video {
     box-shadow: white 0px 2px 5px;
 }
 
-button#playpause {
-    position: relative;
-    bottom: 40px;
-    background-color: #00000040;
+#buttons {
+    margin-top: 13px;
+}
+
+button {
+    background-color: #2c2c2c;
     color: white;
     border: 2px white solid;
     width: 100px;
     border-radius: 10px;
-    height: 30px;
+    height: 33px;
     font-family: "Roboto Mono";
-    box-sizing: border-box;
     transition: 0.3s all;
+    margin: 0px 10px;
 }
 
-button#playpause:hover {
-    position: relative;
-    bottom: 40px;
+button:hover {
+    transform: scale(1.1);
+    color: #2c2c2c;
     background-color: white;
-    color: #3f3f3f;
-    border: 2px white solid;
-    width: 100px;
-    border-radius: 10px;
-    height: 30px;
-    font-family: "Roboto Mono";
-    box-sizing: border-box;
+}
+
+button:active {
+    transform: scale(1.2);
+}
+
+button:disabled {
+    width: 0;
+    margin: 0px 0px;
+    margin-top: 3px;
+    padding: 0;
+    border: none;
+    overflow: clip;
+    font-size: 0;
+}
+
+button:disabled i {
+    font-size: 0;
+}
+
+button#playpause.manual:hover {
+    color: #df0000;
+    border-color: #df0000;
+}
+
+button#playpause.auto:hover {
+    color: #00a500;
+    border-color: #00a500;
+}
+
+button#identify:hover {
+    color: #0080ff;
+    border-color: #0080ff;
+}
+
+.auto-icon {
+    animation: sync-spin 1s ease-in-out infinite;
+}
+
+@keyframes sync-spin {
+    0% {
+        transform: rotate(45deg);
+    }
+    100% {
+        transform: rotate(-135deg);
+    }
 }
