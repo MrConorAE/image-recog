@@ -131,18 +131,21 @@ button:disabled i {
 }
 
 button#playpause.manual:hover {
-    color: #df0000;
+    color: white;
     border-color: #df0000;
+    background-color: hsl(0, 100%, 22%);
 }
 
 button#playpause.auto:hover {
-    color: #00a500;
+    color: white;
     border-color: #00a500;
+    background-color: hsl(120, 100%, 16%);
 }
 
 button#identify:hover {
-    color: #0080ff;
+    color: white;
     border-color: #0080ff;
+    background-color: hsl(210, 100%, 25%);
 }
 
 .auto-icon {
