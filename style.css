@@ -166,3 +166,31 @@ button#identify:hover {
     position: relative;
     bottom: 60px;
 }
+
+#loadingOverlay {
+    color: black;
+    background-color: white;
+    text-align: center;
+    font-weight: normal;
+    position: fixed;
+    top: 33vh;
+    left: 0;
+    right: 0;
+    bottom: 33vh;
+    z-index: 1000;
+    transition: 0.3s all cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+#loadingOverlay.done {
+    bottom: -10px;
+    top: 100vh;
+}
+
+#loadingOverlay i {
+    font-size: 50px;
+    margin-top: 100px;
+}
+
+#loadingOverlay h1 {
+    margin-top: 0px;
+}
