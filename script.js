@@ -129,3 +129,5 @@ function onload() {
     document.getElementById('labels-cont').style.width = labels[labels.length-1].offsetWidth;
   }, 200);*/
 }
+
+window.onload = preload;
