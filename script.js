@@ -37,6 +37,7 @@ function preload() {
 
 function setup() {
   classifier.classify(gotResult);
+  document.getElementById('loadingOverlay').classList = "done";
 }
 
 function videoToggle() {
@@ -107,7 +108,6 @@ function onload() {
       })
       .then(function (stream) {
         video.srcObject = stream;
-        document.getElementById('loadingOverlay').classList = "done";
       })
       .catch(function (error) {
         console.error(error);
