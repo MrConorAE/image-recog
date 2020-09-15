@@ -8,30 +8,25 @@ var labels = [];
 
 var running = true;
 
-function chooseModel() {
+function preload() {
   var modelname = "";
   while (modelname == "") {
     var choice = prompt("Model select:");
     if (choice == "headturn") {
       classifier = ml5.imageClassifier('https://teachablemachine.withgoogle.com/models/bcpXKtPU/model.json', video);
       modelname = "Head Turn";
-      break;
     } else if (choice == "meandphone") {
       classifier = ml5.imageClassifier('https://teachablemachine.withgoogle.com/models/ZvelKXOF/model.json', video);
       modelname = "Me And My Phone";
-      break;
     } else if (choice == "mobilenet") {
       classifier = ml5.imageClassifier('MobileNet', video);
       modelname = "MobileNet";
-      break;
     } else if (choice == "doodlenet") {
       classifier = ml5.imageClassifier('DoodleNet', video);
       modelname = "DoodleNet";
-      break;
     } else if (choice == "darknet") {
       classifier = ml5.imageClassifier('Darknet', video);
       modelname = "DarkNet";
-      break;
     } else {
       alert("Invalid model!");
     }
@@ -67,7 +62,7 @@ function instant() {
 }
 
 // A function to run when we get any errors and the results
-function gotResult(error, results) { // Display error in the console
+function gotResult(error, results) {// Display error in the console
   if (error) {
     console.error(error);
   } else {
@@ -88,10 +83,10 @@ function displayResult(results) {
     setTimeout(function () {
       labels[labels.length - 2].classList = "labels hide-t";
       labels[labels.length - 1].classList = "labels";
-
+      
       //Confidence
-      document.getElementById('conf').innerHTML = nf(results[0].confidence * 100, 0, 1) + "% confidence";
-      document.getElementById('conf').style = ("color: hsl(" + nf(results[0].confidence * 100, 0, 1) + ", 100%, 50%); text-shadow: hsl(" + nf(results[0].confidence * 100, 0, 1) + ", 100%, 50%) 0px 0px 5px;");
+      document.getElementById('conf').innerHTML = nf(results[0].confidence*100, 0, 1) + "% confidence";
+      document.getElementById('conf').style = ("color: hsl(" + nf(results[0].confidence*100, 0, 1) + ", 100%, 50%); text-shadow: hsl(" + nf(results[0].confidence*100, 0, 1) + ", 100%, 50%) 0px 0px 5px;");
 
       //Remove old
       setTimeout(function () {
@@ -100,8 +95,8 @@ function displayResult(results) {
       }, 300);
     }, 300);
   } else { //No - only update confidence
-    document.getElementById('conf').innerHTML = nf(results[0].confidence * 100, 0, 1) + "% confidence";
-    document.getElementById('conf').style = ("color: hsl(" + nf(results[0].confidence * 100, 0, 1) + ", 100%, 50%); text-shadow: hsl(" + nf(results[0].confidence * 100, 0, 1) + ", 100%, 50%) 0px 0px 5px;");
+    document.getElementById('conf').innerHTML = nf(results[0].confidence*100, 0, 1) + "% confidence";
+    document.getElementById('conf').style = ("color: hsl(" + nf(results[0].confidence*100, 0, 1) + ", 100%, 50%); text-shadow: hsl(" + nf(results[0].confidence*100, 0, 1) + ", 100%, 50%) 0px 0px 5px;");
   }
 }
 
@@ -134,5 +129,3 @@ function onload() {
     document.getElementById('labels-cont').style.width = labels[labels.length-1].offsetWidth;
   }, 200);*/
 }
-
-//window.onload = onload;
