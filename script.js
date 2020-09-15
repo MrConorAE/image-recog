@@ -8,25 +8,30 @@ var labels = [];
 
 var running = true;
 
-function preload() {
+function chooseModel() {
   var modelname = "";
   while (modelname == "") {
     var choice = prompt("Model select:");
     if (choice == "headturn") {
       classifier = ml5.imageClassifier('https://teachablemachine.withgoogle.com/models/bcpXKtPU/model.json', video);
       modelname = "Head Turn";
+      break;
     } else if (choice == "meandphone") {
       classifier = ml5.imageClassifier('https://teachablemachine.withgoogle.com/models/ZvelKXOF/model.json', video);
       modelname = "Me And My Phone";
+      break;
     } else if (choice == "mobilenet") {
       classifier = ml5.imageClassifier('MobileNet', video);
       modelname = "MobileNet";
+      break;
     } else if (choice == "doodlenet") {
       classifier = ml5.imageClassifier('DoodleNet', video);
       modelname = "DoodleNet";
+      break;
     } else if (choice == "darknet") {
       classifier = ml5.imageClassifier('Darknet', video);
       modelname = "DarkNet";
+      break;
     } else {
       alert("Invalid model!");
     }
