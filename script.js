@@ -62,7 +62,7 @@ function instant() {
 }
 
 // A function to run when we get any errors and the results
-function gotResult(error, results) {// Display error in the console
+function gotResult(error, results) { // Display error in the console
   if (error) {
     console.error(error);
   } else {
@@ -83,10 +83,10 @@ function displayResult(results) {
     setTimeout(function () {
       labels[labels.length - 2].classList = "labels hide-t";
       labels[labels.length - 1].classList = "labels";
-      
+
       //Confidence
-      document.getElementById('conf').innerHTML = nf(results[0].confidence*100, 0, 1) + "% confidence";
-      document.getElementById('conf').style = ("color: hsl(" + nf(results[0].confidence*100, 0, 1) + ", 100%, 50%); text-shadow: hsl(" + nf(results[0].confidence*100, 0, 1) + ", 100%, 50%) 0px 0px 5px;");
+      document.getElementById('conf').innerHTML = nf(results[0].confidence * 100, 0, 1) + "% confidence";
+      document.getElementById('conf').style = ("color: hsl(" + nf(results[0].confidence * 100, 0, 1) + ", 100%, 50%); text-shadow: hsl(" + nf(results[0].confidence * 100, 0, 1) + ", 100%, 50%) 0px 0px 5px;");
 
       //Remove old
       setTimeout(function () {
@@ -95,8 +95,8 @@ function displayResult(results) {
       }, 300);
     }, 300);
   } else { //No - only update confidence
-    document.getElementById('conf').innerHTML = nf(results[0].confidence*100, 0, 1) + "% confidence";
-    document.getElementById('conf').style = ("color: hsl(" + nf(results[0].confidence*100, 0, 1) + ", 100%, 50%); text-shadow: hsl(" + nf(results[0].confidence*100, 0, 1) + ", 100%, 50%) 0px 0px 5px;");
+    document.getElementById('conf').innerHTML = nf(results[0].confidence * 100, 0, 1) + "% confidence";
+    document.getElementById('conf').style = ("color: hsl(" + nf(results[0].confidence * 100, 0, 1) + ", 100%, 50%); text-shadow: hsl(" + nf(results[0].confidence * 100, 0, 1) + ", 100%, 50%) 0px 0px 5px;");
   }
 }
 
@@ -130,4 +130,4 @@ function onload() {
   }, 200);*/
 }
 
-window.onload = preload;
+//window.onload = onload;
