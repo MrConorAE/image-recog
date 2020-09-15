@@ -156,7 +156,13 @@ button#identify:hover {
     0% {
         transform: rotate(45deg);
     }
+
     100% {
         transform: rotate(-135deg);
     }
+}
+
+#conf {
+    position: relative;
+    bottom: 60px;
 }
